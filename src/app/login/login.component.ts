@@ -24,10 +24,32 @@ pwd=""
 
   ngOnInit(): void {
   }
-  login(){
+  // login(){
+  //   // alert("Button clicked")
+  //   var acno=this.accno
+  //   var pswd=this.pwd
+  //   let accDetails=this.user
+
+  //   if(acno in accDetails){
+  //     if(pswd==accDetails[acno]["password"]){
+  //       alert("Login Successful")
+  //     }
+  //     else{
+  //       alert("Incorrect Password")
+  //     }
+  //   }
+  //   else
+  //   {
+  //     alert("Invalid User")
+  //   }
+  // }
+
+  login(a_no:any,pwd:any){
     // alert("Button clicked")
-    var acno=this.accno
-    var pswd=this.pwd
+    // console.log(ano.value);
+    
+    var acno=a_no.value
+    var pswd=pwd.value
     let accDetails=this.user
 
     if(acno in accDetails){
@@ -44,18 +66,18 @@ pwd=""
     }
   }
 
-  accChange(event: any){
-    // console.log(event.target.value);
-    this.accno=event.target.value
+  // accChange(event: any){
+  //   // console.log(event.target.value);
+  //   this.accno=event.target.value
 
     
-  }
+  // }
   
-  pwdChange(event:any){
-    // console.log(event.target.value);
-    this.pwd=event.target.value
+  // pwdChange(event:any){
+  //   // console.log(event.target.value);
+  //   this.pwd=event.target.value
     
-  }
+  // }
 
 
 }

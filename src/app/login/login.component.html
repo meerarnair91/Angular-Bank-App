@@ -4,9 +4,9 @@
         <h1 style="color:chartreuse">Log In<h4>{{aim}}</h4></h1>
         
         
-        <input type="text" id="ac_no" class="form-control" (change)="accChange($event)"[value]=accnumber placeholder="Enter Account Number" >
-        <input type="password" id="uname" (change)="pwdChange($event)"class="form-control" placeholder="Enter Password">
-        <button class="btn btn-primary mt-2" (click)="login()">Login</button>
+        <input type="text" id="ac_no" class="form-control" #acno [value]=accnumber placeholder="Enter Account Number" >
+        <input type="password" id="uname" #pwd class="form-control" placeholder="Enter Password">
+        <button class="btn btn-primary mt-2" (click)="login(acno,pwd)">Login</button>
     </div>
     <div class="col-4"></div>
 </div>
