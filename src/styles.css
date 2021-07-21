@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+.img{
+    background-image:url('/assets/Images/images\ \(2\).jpg');
+    
+    background-size: cover;
+    height: 270px;
+    width: 500px
+}
+body{
+    background-color:steelblue;
+}
+.cont{
+    height: 250px
+
+
+}
+.box{
+    width:300px;
+    height: 58px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 5px;
+}
+.btn{
+    height:40px ;
+    width: 150px;
+}
+    
+   
+
