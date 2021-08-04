@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from '../Services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -11,38 +13,41 @@ export class LoginComponent implements OnInit {
   // accnumber="Please Enter you Account Number"
   accno = "Please Enter you Account Number"
   pwd = ""
-  user: any = {
-    1001: { acno: 1001, uname: "Ram", password: "userone", balance: 5000 },
-    1002: { acno: 1002, uname: "Rahul", password: "usertwo", balance: 10000 },
-    1003: { acno: 1003, uname: "Revathy", password: "userthree", balance: 8000 },
-    1004: { acno: 1004, uname: "Ravi", password: "userfour", balance: 4000 },
-    1005: { acno: 1005, uname: "Rohit", password: "userfive", balance: 7000 }
+
+  loginForm = this.fb.group({
+    accno: ['', [Validators.required, Validators.minLength(4), Validators.pattern('[0-9]*')]],
+    pwd: ['', [Validators.required, Validators.minLength(4), Validators.pattern('[0-9a-zA-Z]*')]]
+  })
 
 
-  }
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private ds: DataService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
   login() {
     // alert("Button clicked")
-    var acno = this.accno
-    var pswd = this.pwd
-    let accDetails = this.user
+    if (this.loginForm.valid) {
+      var acno = this.loginForm.value.accno
+      var pswd = this.loginForm.value.pwd
 
-    if (acno in accDetails) {
-      if (pswd == accDetails[acno]["password"]) {
+
+      var result = this.ds.login(acno, pswd)
+      if (result) {
         alert("Login Successful")
         this.router.navigateByUrl('dashboard')
       }
       else {
-        alert("Incorrect Password")
+        alert("Invalid User")
+        this.router.navigateByUrl('')
       }
+
     }
-    else {
-      alert("Invalid User")
+    else
+    {
+      alert("Invalid Form")
     }
+
+
   }
 
   // login(a_no:any,pwd:any){

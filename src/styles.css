@@ -26,9 +26,15 @@ body{
     width: 150px;
 }
 .textlink{
-    font-size: 13px;
+    font-size: 14px;
     color: wheat;
 }
-    
+.error{
+    color: red;
+}
+
+.link{
+    color:darkred;
+}
    
 
