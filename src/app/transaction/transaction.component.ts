@@ -7,13 +7,22 @@ import { DataService } from '../Services/data.service';
   styleUrls: ['./transaction.component.css']
 })
 export class TransactionComponent implements OnInit {
+  acno:any;
   transaction=[]
 
   constructor(private ds:DataService) {
-    this.transaction=this.ds.getTransaction()
-    console.log(this.transaction);
-    
-   }
+    this.acno=localStorage.getItem("currentAcc");
+    this.ds.getTransaction(this.acno)
+    .subscribe((result:any)=>{
+      if(result){
+        this.transaction=result.transaction
+      }
+    },
+    (result)=>{
+      alert(result.error.message)
+    }
+    )
+  }
 
   ngOnInit(): void {
   }
